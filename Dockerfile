@@ -48,5 +48,6 @@ VOLUME ["/data"]
 ENTRYPOINT ["/opt/xunfeng/dockerconf/start.sh"]
 
 EXPOSE 80
+EXPOSE 65521
 
 CMD ["/usr/bin/tail", "-f", "/dev/null"]
