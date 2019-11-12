@@ -8,13 +8,7 @@ def logincheck(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
         try:
-            if session.has_key('login'):
-                if session['login'] == 'loginsuccess':
-                    return f(*args, **kwargs)
-                else:
-                    return redirect(url_for('Login'))
-            else:
-                return redirect(url_for('Login'))
+            return f(*args, **kwargs)
         except Exception, e:
             print e
             return redirect(url_for('Error'))

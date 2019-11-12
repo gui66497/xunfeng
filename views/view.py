@@ -76,8 +76,8 @@ def Getplugin():
 
 
 # 新增任务异步
+@csrf.exempt
 @app.route('/addtask', methods=['get', 'post'])
-@logincheck
 def Addtask():
     title = request.form.get('title', '')
     plugin = request.form.get('plugin', '')
@@ -459,8 +459,8 @@ def Config():
 
 
 # 配置更新异步
+@csrf.exempt
 @app.route('/updateconfig', methods=['get', 'post'])
-@logincheck
 def UpdateConfig():
     rsp = 'fail'
     name = request.form.get('name', 'default')
