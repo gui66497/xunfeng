@@ -34,6 +34,9 @@ RUN mkdir -p /opt/xunfeng
 COPY . /opt/xunfeng
 
 RUN set -x \
+    && pip install -U setuptools
+
+RUN set -x \
     && pip install -r /opt/xunfeng/requirements.txt \
     && ln -s /usr/lib/x86_64-linux-gnu/libpcap.so /usr/lib/x86_64-linux-gnu/libpcap.so.1
 
