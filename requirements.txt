@@ -1,4 +1,5 @@
 six>=1.6.0
+setuptools
 Flask
 Flask-WTF
 pymongo
