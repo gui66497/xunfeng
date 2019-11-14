@@ -17,14 +17,16 @@ if __name__ == "__main__":
         ac_data = []
         while True:
             now_time = time.localtime()
+            now_minute = now_time.tm_min
             now_hour = now_time.tm_hour
             now_day = now_time.tm_mday
             now_date = str(now_time.tm_year) + \
                 str(now_time.tm_mon) + str(now_day)
-            cy_day, ac_hour = CONFIG_INI['Cycle'].split('|')
+            cy_day, ac_hour_minute = CONFIG_INI['Cycle'].split('|')
+            ac_hour, ac_minute = ac_hour_minute.split(':')
             log.write('info', None, 0, u'扫描规则: ' + str(CONFIG_INI['Cycle']))
-            # 判断是否进入扫描时段
-            if (now_hour == int(ac_hour) and now_day % int(cy_day) == 0 and now_date not in ac_data) or NACHANGE[0]:
+            # 判断是否进入扫描时段 精确到分钟
+            if (now_hour == int(ac_hour) and now_minute == int(ac_minute) and now_day % int(cy_day) == 0 and now_date not in ac_data) or NACHANGE[0]:
                 ac_data.append(now_date)
                 NACHANGE[0] = 0
                 log.write('info', None, 0, u'开始扫描')
