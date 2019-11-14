@@ -53,4 +53,5 @@ ENTRYPOINT ["/opt/xunfeng/dockerconf/start.sh"]
 EXPOSE 80
 EXPOSE 65521
 
+#保持容器不退出
 CMD ["/usr/bin/tail", "-f", "/dev/null"]
