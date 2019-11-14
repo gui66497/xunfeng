@@ -112,7 +112,7 @@ class vulscan():
 
     def poc_check(self):
         try:
-            res = urllib2.urlopen(self.poc_request, timeout=30)
+            res = urllib2.urlopen(self.poc_request, timeout=10)
             res_html = res.read(204800)
             header = res.headers
             # res_code = res.code

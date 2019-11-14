@@ -32,6 +32,6 @@ if __name__ == "__main__":
                 s.masscan_ac = MASSCAN_AC
                 s.statistics = STATISTICS
                 s.run()
-            time.sleep(60)
+            time.sleep(10)
     except Exception, e:
         print e
