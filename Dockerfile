@@ -33,8 +33,9 @@ ENV PATH /opt/mongodb/bin:$PATH
 RUN mkdir -p /opt/xunfeng
 COPY . /opt/xunfeng
 
+# setuptools 45 no longer support python2.7
 RUN set -x \
-    && pip install -U setuptools
+    && pip install --upgrade 'setuptools<45.0.0'
 
 RUN set -x \
     && pip install -r /opt/xunfeng/requirements.txt \
