@@ -1,9 +1,9 @@
-six>=1.6.0
 Flask
 Flask-WTF
 pymongo
 xlwt
 packaging
 appdirs
-gunicorn
+gunicorn==19.9.0
+pycparser==2.18
 cryptography
