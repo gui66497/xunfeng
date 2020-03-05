@@ -42,12 +42,14 @@ def monitor(CONFIG_INI, STATISTICS, NACHANGE):
             if date_ not in STATISTICS: STATISTICS[date_] = {"add": 0, "update": 0, "delete": 0}
             mongo.na_db.Statistics.update({"date": date_}, {"$set": {"info": STATISTICS[date_]}}, upsert=True)
             new_config = get_config()
+            # 和二期改造项目联动，根据zzjg_count是否变化来决定扫描
+            if CONFIG_INI["zzjg_count"] != new_config["zzjg_count"]:NACHANGE[0] = 1
             if base64.b64encode(CONFIG_INI["Scan_list"]) != base64.b64encode(new_config["Scan_list"]):NACHANGE[0] = 1
             CONFIG_INI.clear()
             CONFIG_INI.update(new_config)
         except Exception, e:
             print e
-        time.sleep(30)
+        time.sleep(10)
 
 
 def get_statistics():
